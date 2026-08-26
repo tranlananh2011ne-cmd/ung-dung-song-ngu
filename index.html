@@ -1,1 +1,67 @@
-<h1>Xin chao! Day la ung dung dich thuat song ngu cua toi.</h1>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Từ Điển Song Ngữ Việt - Nùng</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; padding: 20px; text-align: center; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; }
+        input { width: 80%; padding: 10px; margin: 15px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+        button { padding: 10px 20px; background-color: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #219150; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 5px; font-size: 18px; font-weight: bold; min-height: 30px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Từ Điển Việt - Nùng</h2>
+    <p>Nhập từ tiếng Việt để tra cứu nghĩa sang tiếng Nùng:</p>
+    
+    <input type="text" id="vocabInput" placeholder="Ví dụ: ăn cơm, gà, nước...">
+    <br>
+    <button onclick="translateWord()">Tra cứu</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    // Cơ sở dữ liệu mẫu từ vựng Việt - Nùng (Bạn có thể tự thêm từ mới ở đây)
+    const dictionary = {
+        "ăn cơm": "kin khẩu",
+        "gà": "kai",
+        "nước": "nặm",
+        "uống nước": "kin nặm",
+        "nhà": "vài / rờn",
+        "bố": "pố",
+        "mẹ": "mế",
+        "trâu": "vài",
+        "đi đâu": "pây tớ"
+    };
+
+    function translateWord() {
+        const input = document.getElementById("vocabInput").value.trim().toLowerCase();
+        const resultDiv = document.getElementById("result");
+        
+        if (input === "") {
+            resultDiv.innerHTML = "Vui lòng nhập từ cần tra cứu!";
+            resultDiv.className = "error";
+            return;
+        }
+
+        if (dictionary[input]) {
+            resultDiv.innerHTML = `Tiếng Nùng: <span style="color:#e67e22">${dictionary[input]}</span>`;
+            resultDiv.className = "success";
+        } else {
+            resultDiv.innerHTML = "Từ này chưa có trong hệ thống dữ liệu.";
+            resultDiv.className = "error";
+        }
+    }
+</script>
+
+</body>
+</html>
